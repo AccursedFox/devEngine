@@ -1,6 +1,9 @@
 package com.dev.engine.system.handlers.events;
 
+import com.dev.engine.system.Launcher;
 import com.dev.engine.system.user.interfaces.UIComponent;
+import com.dev.engine.system.user.interfaces.UIContainer;
+import com.dev.engine.system.utils.Register;
 
 public class EventUI extends Event {
 	public static enum UIActions {DISPLAY(0), OPEN(1), CLOSE(2);
@@ -15,16 +18,17 @@ public class EventUI extends Event {
 	public final void actionPreforemd() {
 		if(getSource() instanceof UIComponent) {
 			switch(action.getId()) {
-			case 0: // Open UI
+			
+			case 0:
 				if(!((UIComponent)getSource()).isDisplayed())
-					((UIComponent)getSource()).display();;
-				break;
-			case 1: // Close UI
-				((UIComponent)getSource()).action();
-				break;
-			case 2:
-				((UIComponent)getSource()).close();
-				// Should never be called
-			default:
-				break;}}}
+					Register.registerTexture(((UIComponent)getSource())); break;
+			case 1:
+				if(((UIComponent)getSource()).getParent() != Launcher.getApp().getWindow().getScreen().getComponentHolder()) {
+					if(((UIComponent)getSource()).getParent() != null) {
+						Register.registerUIComponent(((UIContainer)((UIComponent)getSource()).getParent()), (UIComponent)getSource());}
+					else {}}
+				else {
+					Register.registerUIComponent(Launcher.getApp().getWindow().getScreen().getComponentHolder(), (UIComponent)getSource());}
+			case 2: Register.unregisterTexture(((UIComponent)getSource()));	break;
+			default: break;}}}
 }

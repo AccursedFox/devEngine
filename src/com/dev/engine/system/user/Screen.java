@@ -10,7 +10,6 @@ import java.awt.image.BufferStrategy;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.dev.engine.assets.graphics.Texture;
 import com.dev.engine.system.handlers.properties.IDrawable;
 import com.dev.engine.system.user.interfaces.UIContainer;
 import com.dev.engine.system.utils.managers.UIManager;
@@ -19,13 +18,10 @@ import com.dev.engine.system.utils.managers.UIManager;
 public class Screen extends Canvas {
 	protected static List<IDrawable> textures = new LinkedList<IDrawable>();
 	protected static float scale;
+	protected static UIContainer componentHolder;
 	protected static GraphicsConfiguration gCfg = GraphicsEnvironment.getLocalGraphicsEnvironment()
 																	.getDefaultScreenDevice()
 																	.getDefaultConfiguration();
-	
-	static Texture texture;
-	static UIContainer uic;
-	
 	public Screen(Dimension dimension) {
 		super(gCfg);
 		setMinimumSize(dimension);
@@ -38,6 +34,8 @@ public class Screen extends Canvas {
 		addMouseListener(UIManager.getInputListener());
 		addMouseMotionListener(UIManager.getInputListener());
 		addMouseWheelListener(UIManager.getInputListener());
+		
+		componentHolder = new UIContainer();
 	}
 	
 	public final void render() {
@@ -58,4 +56,5 @@ public class Screen extends Canvas {
 	}
 	
 	public final List<IDrawable> getTextures() {return textures;}
+	public final UIContainer getComponentHolder() {return componentHolder;}
 }

@@ -9,9 +9,8 @@ import com.dev.engine.system.handlers.events.EventUI.UIActions;
 
 public class UIContainer extends UIComponent {
 	protected List<UIComponent> components = new LinkedList<UIComponent>();
-	public UIContainer(Texture gui, int x, int y) {
-		super(gui, x, y);
-	}
+	public UIContainer() {super();}
+	public UIContainer(Texture gui) {super(gui);}
 	
 	public final void addComponent(UIComponent uic) {components.add(uic);}
 	public final void removeComponent(UIComponent uic) {components.remove(uic);}
@@ -19,7 +18,7 @@ public class UIContainer extends UIComponent {
 	@Override public final void display() {
 		if(!components.isEmpty())
 			for(UIComponent c : components)
-				new EventUI(c, UIActions.DISPLAY);
+				c.display();
 		
 		super.display();}
 	@Override public final void close() {
