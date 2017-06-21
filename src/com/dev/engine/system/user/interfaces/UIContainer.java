@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.dev.engine.assets.graphics.Texture;
+import com.dev.engine.system.handlers.events.EventUI;
+import com.dev.engine.system.handlers.events.EventUI.UIActions;
 
 public class UIContainer extends UIComponent {
 	protected List<UIComponent> components = new LinkedList<UIComponent>();
@@ -17,14 +19,13 @@ public class UIContainer extends UIComponent {
 	@Override public final void display() {
 		if(!components.isEmpty())
 			for(UIComponent c : components)
-				c.display();
+				new EventUI(c, UIActions.DISPLAY);
 		
 		super.display();}
 	@Override public final void close() {
 		if(!components.isEmpty())
-			for(UIComponent uic : components)
-				uic.close();
+			for(UIComponent c : components)
+				new EventUI(c, UIActions.CLOSE);
 		
 		super.close();}
-	
 }

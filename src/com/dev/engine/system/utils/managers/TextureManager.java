@@ -1,4 +1,4 @@
-package com.dev.engine.system.utils;
+package com.dev.engine.system.utils.managers;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

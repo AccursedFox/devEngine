@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 import com.dev.engine.system.Launcher;
 import com.dev.engine.system.utils.Filer;
-import com.dev.engine.system.utils.TextureManager;
+import com.dev.engine.system.utils.managers.TextureManager;
 
 public class Texture {
 	protected BufferedImage texture;

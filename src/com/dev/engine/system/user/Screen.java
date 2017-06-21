@@ -13,7 +13,7 @@ import java.util.List;
 import com.dev.engine.assets.graphics.Texture;
 import com.dev.engine.system.handlers.properties.IDrawable;
 import com.dev.engine.system.user.interfaces.UIContainer;
-import com.dev.engine.system.utils.UIManager;
+import com.dev.engine.system.utils.managers.UIManager;
 
 @SuppressWarnings("serial")
 public class Screen extends Canvas {

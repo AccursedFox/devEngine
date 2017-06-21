@@ -2,12 +2,9 @@ package com.dev.engine.system;
 
 import java.awt.Dimension;
 
-import com.dev.engine.assets.graphics.Texture;
 import com.dev.engine.system.handlers.EventHandler;
 import com.dev.engine.system.handlers.Handler;
-import com.dev.engine.system.handlers.events.EventUI.UIActions;
 import com.dev.engine.system.user.Window;
-import com.dev.engine.system.user.interfaces.UIContainer;
 import com.dev.engine.system.utils.Timer;
 
 class Engine implements Runnable {
